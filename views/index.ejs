@@ -21,11 +21,8 @@
                             <p>{{ one.content }}</p>
                         </div><!--
                      --><div class="pure-u-1-2">
-                            <ul><li ng-repeat="share in one.shares">
-                                <img src="https://graph.facebook.com/{{ share.from.id }}/picture" />
-                                <h4>{{ share.from.name }}</h4>
-                                <h6>{{ share.hoursAgo }}</h6>
-                                <p>{{ share.message }}</p>
+                            <ul class="shares"><li ng-repeat="share in one.shares">
+                                <% include share %>
                             </li></ul>
                         </div><!--
                  --></div>
