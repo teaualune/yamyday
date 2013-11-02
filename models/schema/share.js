@@ -67,8 +67,6 @@
             user: config.user
         }, function (err, docs) {
             var resultArray = [];
-            console.log('obj');
-            console.log(config.timeStart)
             underscore.each(docs, function (obj){
                 if (obj.date<=config.timeEnd && obj.date >= config.timeStart) {
                     resultArray.push(obj);

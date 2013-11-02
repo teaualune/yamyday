@@ -61,8 +61,6 @@
                     doc.news = news;
                     callback(null, doc);
                 } else {
-                    console.log('create time');
-                    console.log(feed.created_time);
                     Share.create({
                         id: feed.id,
                         userID: userID,
