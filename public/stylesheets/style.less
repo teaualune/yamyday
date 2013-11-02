@@ -78,9 +78,11 @@ html, body, .basic-bg, .pages, .pages, .page {
     }
 }
 
+@headline-width: 547px;
+
 .headline {
     background-image: url('/images/headline-bg.png');
-    background-size: 547px auto;
+    background-size: @headline-width auto;
     background-position: 50% 40px;
 
     p {
@@ -125,8 +127,10 @@ html, body, .basic-bg, .pages, .pages, .page {
     }
 }
 
+@fullsize-width: 988px;
+
 .one, .two, .three {
-    background-size: 988px auto;
+    background-size: @fullsize-width auto;
     background-position: 50% 60px;
     .content {
         width: 950px;
@@ -241,6 +245,38 @@ img {
 
     &.hidden {
         opacity: 0;
+    }
+}
+
+.buttons {
+    height: 730px; /* magic num I know... */
+    position: relative;
+    width: @fullsize-width;
+    margin: 0 auto;
+
+    .layoutHeadline & {
+        height: 698px;
+        width: @headline-width;
+    }
+}
+
+#prev {
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+
+    .layoutHeadline & {
+        display: none;
+    }
+}
+
+#next {
+    position: absolute;
+    bottom: 0px;
+    right: 40px;
+
+    .layoutThree & {
+        display: none;
     }
 }
 

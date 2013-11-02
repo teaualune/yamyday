@@ -198,4 +198,47 @@
         }
     ]);
 
+    var newsPage = [
+            '.headline',
+            '.one',
+            '.two',
+            '.three'
+        ],
+        newsPageIdx = 0;
+
+    $('#prev').click(function (e) {
+        if (newsPageIdx > 0) {
+            newsPageIdx = newsPageIdx - 1;
+            $('.page').addClass('hidden');
+            $(newsPage[newsPageIdx]).removeClass('hidden');
+        }
+        if (newsPageIdx === 0) {
+            $('.pages').addClass('layoutHeadline');
+        } else {
+            $('.pages').removeClass('layoutHeadline');
+            $('.pages').removeClass('layoutThree');
+        }
+    });
+    $('#next').click(function (e) {
+        if (newsPageIdx < 3) {
+            newsPageIdx = newsPageIdx + 1;
+            $('.page').addClass('hidden');
+            $(newsPage[newsPageIdx]).removeClass('hidden');
+        }
+        if (newsPageIdx === 3) {
+            $('.pages').addClass('layoutThree');
+        } else {
+            $('.pages').removeClass('layoutThree');
+            $('.pages').removeClass('layoutHeadline');
+        }
+    });
+
+
+    $(window).mousemove(function (e) {
+        var xRight = e.pageX / $(window).width(),
+            xLeft = 1 - xRight;
+        $('#prev').css('opacity', xLeft);
+        $('#next').css('opacity', xRight);
+    });
+
 }(angular, jQuery));

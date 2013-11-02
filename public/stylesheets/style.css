@@ -216,3 +216,31 @@ body,
 .store.hidden {
   opacity: 0;
 }
+.buttons {
+  height: 730px;
+  /* magic num I know... */
+
+  position: relative;
+  width: 988px;
+  margin: 0 auto;
+}
+.layoutHeadline .buttons {
+  height: 698px;
+  width: 547px;
+}
+#prev {
+  position: absolute;
+  bottom: 0px;
+  left: 40px;
+}
+.layoutHeadline #prev {
+  display: none;
+}
+#next {
+  position: absolute;
+  bottom: 0px;
+  right: 40px;
+}
+.layoutThree #next {
+  display: none;
+}
