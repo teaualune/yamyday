@@ -16,9 +16,9 @@ def getContentWithUrl(url, source):
         search_title = search_soup.find("meta", {"property":"og:title"})['content']
         search_content = search_soup.find("div", {"id":"mediaarticlebody"})
         try:
-            search_imgUrl = search_content.find("img")['src']
+            search_imgUrl = search_soup.find("meta", {"property":"og:image"})['content']
         except Exception, e:
-            search_content_result=''
+            search_content_result='http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         for pContent in search_content.findAll("p"):
             search_content_result = search_content_result + pContent.text
         reDic['search_title'] = search_title
@@ -35,7 +35,7 @@ def getContentWithUrl(url, source):
             search_content_result = ""
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
-        reDic['search_imgUrl'] = ''
+        reDic['search_imgUrl'] = 'http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         return reDic
     if source =='nownews':
         search_title = search_soup.find("h1",{"itemprop":"headline"}).text
@@ -43,7 +43,7 @@ def getContentWithUrl(url, source):
         try:
             search_imgUrl = search_soup.find("div", {"class":"story_photo"}).find("img")['src']
         except Exception, e:
-            search_content_result=''
+            search_content_result='http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         for pContent in search_content.findAll("p"):
             search_content_result = search_content_result + pContent.text
         reDic['search_title'] = search_title
@@ -57,7 +57,7 @@ def getContentWithUrl(url, source):
             search_content_result = search_content_result + pContent.text
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
-        reDic['search_imgUrl'] = ''
+        reDic['search_imgUrl'] = 'http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         return reDic
     if source =='cna':
         search_title = search_soup.find("div",{"class":"news_content"}).find('h2').text
@@ -65,7 +65,7 @@ def getContentWithUrl(url, source):
         try:
             search_imgUrl = search_content.find("div", {"class":"box_1"}).find("img")['src']
         except Exception, e:
-            search_content_result=''
+            search_content_result='http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         for pContent in search_content.findAll("p"):
             search_content_result = search_content_result + pContent.text
         reDic['search_title'] = search_title
@@ -78,7 +78,7 @@ def getContentWithUrl(url, source):
         try:
             search_imgUrl = search_content.find("div", {"class":"img_view"}).find("img")['src']
         except Exception, e:
-            search_content_result=''
+            search_content_result='http://l.yimg.com/bt/api/res/1.2/81I5U991YW6EEaB2Cjd58g--/YXBwaWQ9eW5ld3M7cT04NTt3PTYwMA--/http://l.yimg.com/os/mit/media/m/social/images/social_default_logo-1481777.png'
         for pContent in search_content.findAll("p"):
             search_content_result = search_content_result + pContent.text
         reDic['search_title'] = search_title
@@ -87,7 +87,8 @@ def getContentWithUrl(url, source):
         return reDic
 
 if __name__ == '__main__':
-    getContentWithUrl('http://tw.news.yahoo.com/蘋果最新專利曝光-讓太陽幫你的iphone充電-094024840.html', 'yahoo')
+    getUrlByTitle('鞠躬道歉 福懋老總:混油是常態')
+    #getContentWithUrl('http://tw.news.yahoo.com/蘋果最新專利曝光-讓太陽幫你的iphone充電-094024840.html', 'yahoo')
     # getContentWithUrl('http://www.ettoday.net/news/20131102/290117.htm', "ettoday")
     # getContentWithUrl('http://www.nownews.com/n/2013/11/01/1008630', 'nownews')
     # getContentWithUrl('http://udn.com/NEWS/MAINLAND/MAI1/8268554.shtml', 'udn')
