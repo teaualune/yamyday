@@ -1,12 +1,16 @@
 (function () {
     var underscore = require('underscore'),
         async = require('async'),
+
+        User = require('../models/schema/user'),
         feed = require('../utils/fb-feed'),
         newsParser = require('../utils/news-parser'),
+        shareCounter = require('../utils/share-counter'),
         timeUtils = require('../utils/time-utils'),
         isTestMode = require('../config.json').testMode,
         testModeArray = function (array) {
-            return underscore.first(array, 10);
+            var limit = isTestMode ? 100 : array.length;
+            return underscore.first(array, limit);
         };
 
     module.exports = {
@@ -36,9 +40,17 @@
                 if (err) {
                     res.send(err);
                 } else {
-                    console.log(results);
-                    res.send({
-                        feeds: underscore.flatten(results)
+                    var filtered = underscore.compact(underscore.flatten(results));
+                    shareCounter(filtered, function (err, data) {
+                        if (err) {
+                            res.send(err);
+                        } else {
+                            User.updateLastVisit({ id: res.locals.user._id }, function () {
+                                res.send({
+                                    feeds: data
+                                });
+                            });
+                        }
                     });
                 }
             });
