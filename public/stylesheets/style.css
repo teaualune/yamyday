@@ -80,22 +80,6 @@ body,
   background-size: 547px auto;
   background-position: 50% 40px;
 }
-.headline p {
-  text-align: center;
-  height: 60%;
-}
-.headline img {
-  max-width: 100%;
-  max-height: 100%;
-}
-.headline h1 {
-  height: 25%;
-  overflow-y: hidden;
-}
-.headline h3 {
-  height: 5%;
-  overflow-y: hidden;
-}
 .headline span {
   display: inline-block;
   width: 44%;
@@ -113,6 +97,26 @@ body,
   height: 65%;
   min-height: 65%;
   margin-top: 15%;
+}
+.headline p,
+.detail p {
+  text-align: center;
+  height: 60%;
+}
+.headline img,
+.detail img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.headline h1,
+.detail h1 {
+  height: 25%;
+  overflow-y: hidden;
+}
+.headline h3,
+.detail h3 {
+  height: 5%;
+  overflow-y: hidden;
 }
 .one,
 .two,
@@ -146,6 +150,13 @@ body,
 .detail {
   background-image: url('/images/stack-bg.png');
 }
+.detail .pure-u-1-2 {
+  overflow-y: scroll;
+}
+.detail .pure-u-1-2.left p {
+  font-size: 150%;
+  line-height: 2em;
+}
 .close-btn {
   position: absolute;
   top: 40px;
@@ -154,6 +165,7 @@ body,
   height: 40px;
   border-radius: 20px;
   background-color: gray;
+  border: 0;
 }
 .shares h4 {
   line-height: 30px;

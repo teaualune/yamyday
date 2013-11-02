@@ -210,7 +210,10 @@
                 var newsID = $(e.currentTarget).attr('newsID');
                 var n = nm.newsById(newsID);
                 if (n) {
-                    nm.detailNews = n;
+                    s.detailNews = n;
+                    $('.page').addClass('hidden');
+                    $('.detail').removeClass('hidden');
+                    s.closeDetail();
                     $('.page').addClass('hidden');
                     $('.detail').removeClass('hidden');
                 }

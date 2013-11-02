@@ -1,16 +1,18 @@
-<div class="pure-g"><!--
- --><div class="pure-u-1-2 left">
-        <div class="p10">
-            <h1>{{ detailNews.title }}</h1>
-            <img src="{{ detailNews.imgUrl }}" />
-            <h3>{{ detailNews.subTitle }}</h3>
-            <p class="p10">{{ detailNews.content }}</p>
-        </div>
-    </div><!--
- --><div class="pure-u-1-2">
-        <ul class="shares"><li ng-repeat="share in detailNews.shares">
-            <% include share %>
-        </li></ul>
-    </div><!--
---></div>
-<button class="close-btn" ng-click="closeDetail()"></button>
+<div class="content">
+    <div class="pure-g"><!--
+     --><div class="pure-u-1-2 left">
+            <div class="p10">
+                <h1>{{ detailNews.title }}</h1>
+                <img src="{{ detailNews.imgUrl }}" />
+                <h3>{{ detailNews.subTitle }}</h3>
+                <p class="p10">{{ detailNews.content }}</p>
+            </div>
+        </div><!--
+     --><div class="pure-u-1-2">
+            <ul class="shares"><li ng-repeat="share in detailNews.shares">
+                <% include share %>
+            </li></ul>
+        </div><!--
+ --></div>
+</div>
+<button class="close-btn" ng-click="closeDetail()">X</button>
