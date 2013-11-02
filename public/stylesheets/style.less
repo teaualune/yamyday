@@ -13,9 +13,14 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
+p {
+    line-height: 1.5em;
+}
+
 ul, li {
     list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 .invisible {
@@ -24,6 +29,10 @@ ul, li {
 
 .hidden {
     display: none;
+}
+
+.p10 {
+    padding: 10px;
 }
 
 html, body, .basic-bg, .pages, .pages, .page {
@@ -49,14 +58,23 @@ html, body, .basic-bg, .pages, .pages, .page {
     left: 20px;
     background-repeat: no-repeat;
 
+    h1 {
+        font-size: 200%;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 130%;
+    }
+
     .pure-g, .pure-u-1-2 {
         height: 100%;
     }
 
     .content {
-        margin: 9% auto 6%;
-        height: 75%;
-        min-height: 75%;
+        margin: 7% auto 6%;
+        height: 77%;
+        min-height: 77%;
     }
 }
 
@@ -64,6 +82,40 @@ html, body, .basic-bg, .pages, .pages, .page {
     background-image: url('/images/headline-bg.png');
     background-size: 547px auto;
     background-position: 50% 40px;
+
+    p {
+        text-align: center;
+        height: 60%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    h1 {
+        height: 25%;
+        overflow-y: hidden;
+    }
+
+    h3 {
+        height: 5%;
+        overflow-y: hidden;
+    }
+
+    span {
+        display: inline-block;
+        width: 44%;
+        vertical-align: top;
+        overflow: hidden;
+    }
+
+    b {
+        width: 4%;
+        display: inline-block;
+        color: rgb(220, 30, 80);
+        vertical-align: top;
+    }
 
     .content {
         width: 500px;
@@ -83,12 +135,43 @@ html, body, .basic-bg, .pages, .pages, .page {
 
 .one {
     background-image: url('/images/one-bg.png');
+    .pure-u-1-2 {
+        overflow-y: scroll;
+
+        &.left p {
+            font-size: 150%;
+            line-height: 2em;
+        }
+    }
 }
+
 .two {
     background-image: url('/images/two-bg.png');
 }
+
 .three {
     background-image: url('/images/three-bg.png');
+}
+
+.shares {
+    h4 {
+        line-height: 30px;
+        vertical-align: middle;
+    }
+    h6 {
+        line-height: 20px;
+        vertical-align: middle;
+    }
+    p {
+        margin: 1em 0.5em;
+    }
+    img {
+        float: left;
+        padding-right: 10px;
+    }
+    li {
+        margin: 1em 0;
+    }
 }
 
 .s-1-2 {
@@ -100,25 +183,25 @@ html, body, .basic-bg, .pages, .pages, .page {
 }
 
 .section {
-    padding: 10px;
     box-sizing: border-box;
-    h3, h4 {
-        height: 20%;
-        max-height: 20%;
-        vertical-align: center;
+    overflow-y: hidden;
+
+    h3 {
+        font-size: 150%;
+        margin: 5px 0;
     }
 
-    p {
-        max-height: 60%;
-        overflow-y: hidden;
+    h4 {
+        font-size: 130%;
+        margin: 5px 0;
     }
 }
 
 img {
     .section & {
-        max-width: 60%;
-        max-height: 60%;
-        margin: 0 5px;
+        max-width: 100%;
+        max-height: 70%;
+        margin: 10px;
     }
     .layout1 & {
         float: left;
