@@ -240,11 +240,15 @@ body,
   width: 547px;
 }
 #prev {
+  display: inline-block;
+  background-image: url('/images/turnL.png');
+  width: 122px;
+  height: 112px;
   position: absolute;
   bottom: -730px;
   /* magic num I know... */
 
-  left: 40px;
+  left: 0;
 }
 .layoutThree #prev {
   bottom: -698px;
@@ -253,9 +257,13 @@ body,
   display: none;
 }
 #next {
+  display: inline-block;
+  background-image: url('/images/turnR.png');
+  width: 122px;
+  height: 112px;
   position: absolute;
   bottom: -730px;
-  right: 40px;
+  right: 0;
 }
 .layoutHeadline #next {
   bottom: -698px;

@@ -258,8 +258,8 @@
     $(window).mousemove(function (e) {
         var xRight = e.pageX / $(window).width(),
             xLeft = 1 - xRight;
-        $('#prev').css('opacity', xLeft);
-        $('#next').css('opacity', xRight);
+        $('#prev').css('opacity', xLeft * 2);
+        $('#next').css('opacity', xRight * 2);
     });
 
 }(angular, jQuery));
