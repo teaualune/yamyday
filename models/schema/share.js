@@ -1,14 +1,13 @@
 (function () {
     var mongoose = require('mongoose'),
         Schema = mongoose.Schema,
-        fromSchema = new Schema({
-            FBID: String,
-            name: String
-        }),
         ShareSchema = new Schema({
             _id: String, //postFBID
             user: String, // U, the searching guy
-            from: {type: String, refs:fromSchema}, // U're friend, who post this share
+            from: {
+                "FBID" : String,
+                'name' : String
+            }, // U're friend, who post this share
             newsID: String, //News_id
             message: {type: String, default: ''},
             likes: {type: Number, default: 0},
