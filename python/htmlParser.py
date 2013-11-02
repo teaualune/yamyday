@@ -28,8 +28,11 @@ def getContentWithUrl(url, source):
     if source =='ettoday':
         search_title = search_soup.find("h2", {"class":"title clearfix"}, {"itemprop":"headline"}).text
         search_content = search_soup.find("div", {"id":"story"})
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+        try:
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
+        except Exception, e:
+            search_content_result = ""
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = ''

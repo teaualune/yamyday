@@ -42,12 +42,22 @@
                 } else {
                     var filtered = underscore.compact(underscore.flatten(results));
                     shareCounter(filtered, function (err, data) {
+                        var sharesObj = {};
+                        var scoreObj = {};
+                        underscore.each(data, function (obj) {
+                            sharesObj[obj._id] = obj.shares;
+                            scoreObj[obj._id] = obj.score;
+                        });
+                        console.log(sharesObj);
+                        console.log(scoreObj);
                         if (err) {
                             res.send(err);
                         } else {
                             User.updateLastVisit({ id: res.locals.user._id }, function () {
                                 res.send({
-                                    feeds: data
+                                    news: data,
+                                    shares: sharesObj,
+                                    scores: scoreObj
                                 });
                             });
                         }

@@ -63,8 +63,6 @@
         dataType: 'json'
     }).done(function (res) {
         console.log(res);
-        console.log(res.feeds[0]);
-        console.log(res.feeds[0].shares);
     }).fail(function (err) {
         console.log(err);
     });

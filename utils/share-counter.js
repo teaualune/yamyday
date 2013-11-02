@@ -36,7 +36,7 @@
                     return -shareObj.score;
                 });
                 newsForArray = shareSameArray[0].news;
-                newsForArray.shares = underscore.map(shareSameArray, function (s) {
+                newsForArray['shares'] = underscore.map(shareSameArray, function (s) {
                     return underscore.pick(s, [
                         '_id',
                         'user',
@@ -53,7 +53,7 @@
                     arrayScore = arrayScore + shareObj.score;
                 })
                 arrayScore = arrayScore / shareSameArray.length;
-                newsForArray.score = arrayScore;
+                newsForArray['score'] = arrayScore;
                 newsArray.push(newsForArray);
             });
             newsArray = underscore.sortBy(newsArray, function (shareObj) {
