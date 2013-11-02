@@ -4,7 +4,7 @@ exports.index = function (req, res) {
             img = '<img src="{{ ' + sectionI + '.imgUrl }}" />',
             content = '<p>{{ ' + sectionI + '.content }}</p>';
         return text = [
-            '<div class="section p10 s-1-' + partition + ' layout' + layoutType + '">',
+            '<div newsID="{{ ' + sectionI + '.newsID }}" class="section p10 s-1-' + partition + ' layout' + layoutType + '">',
             '<h3>{{ ' + sectionI + '.title }}</h3>',
             '<h4>{{ ' + sectionI + '.subTitle }}</h4>',
             (layoutType === 3) ? '' : img,

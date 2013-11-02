@@ -36,7 +36,15 @@
                 now = new Date(),
                 hours = Math.floor((((now - time) / 1000) / 60) / 60);
             return (hours) ? (hours + '小時前') : '現在';
-        };
+        },
+
+        newsPage = [
+            '.headline',
+            '.one',
+            '.two',
+            '.three'
+        ],
+        newsPageIdx = 0;
 
     window.app = A.module('yamyday', []);
 
@@ -142,6 +150,13 @@
                     }
                 }
             },
+            newsById: function (id) {
+                for (var i = 0; i < news.length; i = i + 1) {
+                    if (news[i]._id === id) {
+                        return news[i];
+                    }
+                }
+            },
             headline: headline,
             one: one,
             two: two,
@@ -187,6 +202,19 @@
         'newsModel',
         function (s, nm) {
             s.detailNews = nm.detailNews;
+            s.closeDetail = function () {
+                $('.page').addClass('hidden');
+                $(newsPage[newsPageIdx]).removeClass('hidden');
+            };
+            $('.pages').delegate('.section', 'click', function (e) {
+                var newsID = $(e.currentTarget).attr('newsID');
+                var n = nm.newsById(newsID);
+                if (n) {
+                    nm.detailNews = n;
+                    $('.page').addClass('hidden');
+                    $('.detail').removeClass('hidden');
+                }
+            });
         }
     ]);
 
@@ -198,13 +226,6 @@
         }
     ]);
 
-    var newsPage = [
-            '.headline',
-            '.one',
-            '.two',
-            '.three'
-        ],
-        newsPageIdx = 0;
 
     $('#prev').click(function (e) {
         if (newsPageIdx > 0) {
