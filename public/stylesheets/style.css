@@ -4,3 +4,67 @@ body {
 a {
   color: #00B7FF;
 }
+.invisible {
+  opacity: 0;
+}
+.hidden {
+  display: none;
+}
+html,
+body,
+.basic-bg,
+.pages,
+.pages,
+.page {
+  height: 100%;
+  min-height: 100%;
+}
+.basic-bg {
+  background-image: url('/images/bg.png');
+  background-size: 100% auto;
+}
+.pages {
+  position: relative;
+  -webkit-transition: opacity 0.5s;
+}
+.page {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  left: 20px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+.page .pure-g,
+.page .pure-u-1-2 {
+  height: 100%;
+}
+.page .content {
+  margin: 0 auto;
+}
+.headline {
+  background-image: url('/images/headline-bg.png');
+  background-size: 547px auto;
+}
+.headline .content {
+  width: 500px;
+  margin-top: 150px;
+}
+.one,
+.two,
+.three {
+  background-image: url('/images/fullsize-bg.png');
+  background-size: 1100px auto;
+}
+.one .content,
+.two .content,
+.three .content {
+  width: 1000px;
+}
+.s-1-2 {
+  height: 50%;
+}
+.s-1-3 {
+  height: 33.3%;
+}

@@ -6,9 +6,46 @@
         <link rel="stylesheet" href="/stylesheets/style.css" />
     </head>
     <body>
-        <div>
-            <div ng-view></div>
-            <div class="loading"></div>
+        <div class="basic-bg" ng-controller="MainCtrl">
+            <div class="pages invisible">
+                <div class="page headline">
+                    <div class="content">
+                        <h1>{{ headline.title }}</h1>
+                        <h3>{{ headline.subTitle }}</h3>
+                        <img src="{{ headline.imgUrl }}" />
+                    </div>
+                </div>
+                <div class="page one hidden">
+                    <p>{{ one.content }}</p>
+                </div>
+                <div class="page two hidden">
+                    <div class="pure-g"><!--
+                     --><div class="pure-u-1-2">
+                            <%- sectionHelper(2, 'two', 0) %>
+                            <%- sectionHelper(2, 'two', 1) %>
+                        </div><!--
+                     --><div class="pure-u-1-2">
+                            <%- sectionHelper(2, 'two', 2) %>
+                            <%- sectionHelper(2, 'two', 3) %>
+                        </div><!--
+                 --></div>
+                </div>
+                <div class="page three hidden">
+                    <div class="pure-g"><!--
+                     --><div class="pure-u-1-2">
+                            <%- sectionHelper(2, 'three', 0) %>
+                            <%- sectionHelper(2, 'three', 1) %>
+                        </div><!--
+                     --><div class="pure-u-1-2">
+                            <%- sectionHelper(3, 'three', 2) %>
+                            <%- sectionHelper(3, 'three', 3) %>
+                            <%- sectionHelper(3, 'three', 4) %>
+                        </div><!--
+                 --></div>
+                </div>
+                <div class="page detail hidden" ng-controller="DetailPageCtrl"><% include detail %></div>
+            </div>
+            <div class="loading">Loading...</div>
         </div>
         <script type="text/javascript" src="/javascripts/jquery-2.0.3.js"></script>
         <script type="text/javascript" src="javascripts/angular.js"></script>
