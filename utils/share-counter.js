@@ -12,7 +12,7 @@
 
         underscore.each(results, function (shareObj) {
             var shareSameCount = underscore.where(results, { newsID: shareObj.newsID }).length;
-            shareObj.score = (shareObj.likes + 1) * shareSameCount * (1000000000000 / (now - shareObj.date + 1));
+            shareObj.score = (shareObj.likes + 1) * shareSameCount * (100000000 / (now - shareObj.date + 1));
         });
         results = underscore.sortBy(results, function (shareObj) {
             return -shareObj.score;
@@ -51,6 +51,7 @@
                 var arrayScore = 0;
                 underscore.each(shareSameArray, function (shareObj) {
                     arrayScore = arrayScore + shareObj.score;
+
                 })
                 arrayScore = arrayScore / shareSameArray.length;
                 newsForArray['score'] = arrayScore;
