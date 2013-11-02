@@ -71,6 +71,7 @@
             if (err) {
                 callback(err);
             } else {
+                console.log(docs);
                 callback(null, docs);
             }
         });
