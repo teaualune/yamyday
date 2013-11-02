@@ -4,6 +4,15 @@ body {
 a {
   color: #00B7FF;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
 ul,
 li {
   list-style: none;
@@ -26,7 +35,7 @@ body,
 }
 .basic-bg {
   background-image: url('/images/bg.png');
-  background-size: 100% auto;
+  background-size: auto 100%;
 }
 .pages {
   position: relative;
@@ -38,7 +47,6 @@ body,
   right: 20px;
   bottom: 0;
   left: 20px;
-  background-position: 50% 40px;
   background-repeat: no-repeat;
 }
 .page .pure-g,
@@ -46,26 +54,40 @@ body,
   height: 100%;
 }
 .page .content {
-  margin: 0 auto;
+  margin: 9% auto 6%;
+  height: 75%;
+  min-height: 75%;
 }
 .headline {
   background-image: url('/images/headline-bg.png');
   background-size: 547px auto;
+  background-position: 50% 40px;
 }
 .headline .content {
   width: 500px;
-  margin-top: 190px;
+  height: 65%;
+  min-height: 65%;
+  margin-top: 15%;
 }
 .one,
 .two,
 .three {
-  background-image: url('/images/fullsize-bg.png');
-  background-size: 1100px auto;
+  background-size: 988px auto;
+  background-position: 50% 60px;
 }
 .one .content,
 .two .content,
 .three .content {
-  width: 1000px;
+  width: 950px;
+}
+.one {
+  background-image: url('/images/one-bg.png');
+}
+.two {
+  background-image: url('/images/two-bg.png');
+}
+.three {
+  background-image: url('/images/three-bg.png');
 }
 .s-1-2 {
   height: 50%;
