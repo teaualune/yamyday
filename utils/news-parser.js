@@ -52,11 +52,38 @@
 
         findYahooNewsByAlias = function () {},
 
-        buildShare = function () {};
+        buildShare = function (feed, news, userID, callback) {
+            Share.show({ shareID: feed.id }, function (err, doc) {
+                if (err) {
+                    callback(err);
+                } else if (doc) {
+                    doc.news = news;
+                    callback(null, doc);
+                } else {
+                    Share.create({
+                        id: feed.id,
+                        userID: userID,
+                        from: feed.from,
+                        newsID: news._id,
+                        message: feed.message,
+                        likes: feed.likes.summary.total_count,
+                        date: new Date(feed.created_time)
+                    }, function (err, doc) {
+                        if (err) {
+                            callback(err);
+                        } else {
+                            doc.news = news;
+                            callback(null, doc);
+                        }
+                    });
+                }
+            });
+        };
 
     module.exports = function (feeds, config, callback) {
         async.map(feeds, function (feed, cb) {
-            var source = matchNews(feed.link);
+            var source = matchNews(feed.link),
+                yahooLink = feed.link;
             console.log(feed.link + ' ; ' + source);
             async.waterfall([
                 function (cb) {
@@ -81,19 +108,38 @@
                     }
                 },
                 function (news, cb) {
+                    if (source === 'yahoo') {
+                        cb(null, news);
+                    } else {
+                        crawler.crawlYahooSearchPage(news.search_title, function (err, link) {
+                            if (err || !link) {
+                                cb('skip');
+                            } else {
+                                yahooLink = link;
+                                cb(null, news);
+                            }
+                        });
+                    }
+                },
+                function (news, cb) {
                     if (news._id) {
                         cb(null, news);
                     } else {
-                        News.create({
-                            id: feed.link,
-                            title: news.search_title,
-                            content: news.search_content_result,
-                            imgUrl: news.search_imgUrl
-                        }, cb);
+                        var newsObj = {
+                                id: yahooLink,
+                                title: news.search_title,
+                                content: news.search_content_result,
+                                imgUrl: news.search_imgUrl
+                            };
+                        if (source !== 'yahoo') {
+                            newsObj.aliases = [ feed.link ];
+                        }
+                        News.create(newsObj, cb);
                     }
                 },
                 function (news, cb) {
                     // get share from DB or create one if not found
+                    buildShare(feed, news, config.fbid, cb);
                 }
             ], function (err, share) {
                 if (err && err !== 'skip') {
