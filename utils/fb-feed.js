@@ -17,7 +17,11 @@
         graph.setAccessToken(config.accessToken);
         graph.get(url, function (err, feed) {
             if (err) {
-                callback(err);
+                if (err.code && err.code === 613) { // exceed quota
+                    callback(null, []);
+                } else {
+                    callback(err);
+                }
             } else {
                 callback(null, feed.data);
             }
