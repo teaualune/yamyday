@@ -13,74 +13,90 @@ def getContentWithUrl(url, source):
     search_imgUrl = ''
     reDic = {}
     if source == 'yahoo':
-        search_title = search_soup.find("meta", {"property":"og:title"})['content']
-        search_content = search_soup.find("div", {"id":"mediaarticlebody"})
         try:
+            search_title = search_soup.find("meta", {"property":"og:title"})['content']
+            search_content = search_soup.find("div", {"id":"mediaarticlebody"})
             search_imgUrl = search_content.find("img")['src']
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
         except Exception, e:
             search_content_result=''
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = search_imgUrl
         return reDic
     if source =='ettoday':
-        search_title = search_soup.find("h2", {"class":"title clearfix"}, {"itemprop":"headline"}).text
-        search_content = search_soup.find("div", {"id":"story"})
         try:
+            search_title = search_soup.find("h2", {"class":"title clearfix"}, {"itemprop":"headline"}).text
+            search_content = search_soup.find("div", {"id":"story"})
             for pContent in search_content.findAll("p"):
                 search_content_result = search_content_result + pContent.text
         except Exception, e:
-            search_content_result = ""
+            search_content_result=''
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = ''
         return reDic
     if source =='nownews':
-        search_title = search_soup.find("h1",{"itemprop":"headline"}).text
-        search_content = search_soup.find("div", {"itemprop":"articleBody"})
         try:
+            search_title = search_soup.find("h1",{"itemprop":"headline"}).text
+            search_content = search_soup.find("div", {"itemprop":"articleBody"})
             search_imgUrl = search_soup.find("div", {"class":"story_photo"}).find("img")['src']
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
         except Exception, e:
             search_content_result=''
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = search_imgUrl
         return reDic
     if source =='udn':
-        search_title = search_soup.find("div", {"class":"story_title"}).text
-        search_content = search_soup.find("div", {"id":"story"})
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+        try:
+            search_title = search_soup.find("div", {"class":"story_title"}).text
+            search_content = search_soup.find("div", {"id":"story"})
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
+        except Exception, e:
+            search_content_result=''
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = ''
         return reDic
     if source =='cna':
-        search_title = search_soup.find("div",{"class":"news_content"}).find('h2').text
-        search_content = search_soup.find("div",{"class":"news_content"})
         try:
+            search_title = search_soup.find("div",{"class":"news_content"}).find('h2').text
+            search_content = search_soup.find("div",{"class":"news_content"})
             search_imgUrl = search_content.find("div", {"class":"box_1"}).find("img")['src']
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
         except Exception, e:
             search_content_result=''
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = search_imgUrl
         return reDic
     if source =='chinatimes':
-        search_title = search_soup.find("div",{"class":"page_index"}).find('h1').text
-        search_content = search_soup.find("div",{"class":"clear-fix"})
+        
         try:
+            search_title = search_soup.find("div",{"class":"page_index"}).find('h1').text
+            search_content = search_soup.find("div",{"class":"clear-fix"})
             search_imgUrl = search_content.find("div", {"class":"img_view"}).find("img")['src']
+            for pContent in search_content.findAll("p"):
+                search_content_result = search_content_result + pContent.text
         except Exception, e:
             search_content_result=''
-        for pContent in search_content.findAll("p"):
-            search_content_result = search_content_result + pContent.text
+            search_imgUrl = ''
+            search_title = ''
         reDic['search_title'] = search_title
         reDic['search_content_result'] = search_content_result
         reDic['search_imgUrl'] = search_imgUrl
