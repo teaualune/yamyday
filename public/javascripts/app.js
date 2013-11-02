@@ -8,7 +8,6 @@
                 newsID: null,
             };
         },
-
         detailNewsSchema = function () {
             return {
                 newsTitle: null,
@@ -18,7 +17,6 @@
                 shares: null
             };
         },
-
         mergeIntoNews = function (news, S, name) {
             var link, s, i;
             for (link in S) {
@@ -33,7 +31,6 @@
                 }
             }
         },
-
         hoursAgo = function (timeString) {
             var time = new Date(timeString),
                 now = new Date(),
@@ -52,7 +49,7 @@
             add: function (news) {
                 _stores.push(news);
             },
-            remove: function (idx) {
+            remove: function (idx) { // index in _stores
                 _stores.splice(idx, 1);
             }
         };
@@ -155,7 +152,8 @@
         '$scope',
         '$http',
         'newsModel',
-        function (s, h, nm) {
+        'storeModel',
+        function (s, h, nm, sm) {
             s.headline = nm.headline;
             s.one = nm.one;
             s.two = nm.two;
@@ -166,6 +164,17 @@
                 $('.loading').addClass('hidden');
                 nm.init(data);
             });
+            s.toggleStore = function (news, e) {
+                var idx = sm.stores().indexOf(news);
+                $(e.currentTarget).toggleClass('added');
+                if (idx >= 0) { // found, remove
+                    sm.remove(idx);
+                } else { // not found, add
+                    sm.add(news);
+                }
+                console.log(sm.stores().length);
+
+            }
         }
     ]);
 

@@ -68,3 +68,13 @@ body,
 .s-1-3 {
   height: 33.3%;
 }
+.add-store {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  -webkit-transition: background 0.5s;
+}
+.add-store.added {
+  background-color: green;
+}
