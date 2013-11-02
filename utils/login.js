@@ -1,19 +1,45 @@
 module.exports = function (graph, config) {
-    var fb = require('./facebook'),
-        async = require('async'),
+    var async = require('async'),
         underscore = require('underscore'),
+
+        fb = require('./facebook'),
+        User = require('../models/schema/user'),
+
         checkFirstTimeLogin = function (accessToken, callback) {
-            var id;
+            var id, name;
             async.waterfall([
                 function (cb) {
                     fb.me({ accessToken: accessToken }, cb);
                 },
                 function (me, cb) {
                     id = me.id;
-                    cb();
+                    name = me.name;
+                    User.show({ id: me.id }, function (err, user) {
+                        if (err) {
+                            cb(err);
+                        } else if (!user) { // first time login
+                            cb(null);
+                        } else {
+                            cb('return');
+                        }
+                    });
+                },
+                function (cb) {
+                    fb.getFriends({ accessToken: accessToken }, cb);
+                },
+                function (friends, cb) {
+                    User.create({
+                        id: id,
+                        name: name,
+                        accessToken: accessToken,
+                        friends: underscore.pluck(friends, 'id')
+                    }, function () {
+                        console.log('create user ' + id);
+                        cb(null);
+                    });
                 }
             ], function (err) {
-                if (err) {
+                if (err && err !== 'return') {
                     callback(err);
                 } else {
                     callback(null, id);

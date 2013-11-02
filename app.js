@@ -40,6 +40,8 @@ app.configure('development', function () {
 app.get('/', userMiddleware, routes.index);
 app.get('/login', login(fb, fbConfig));
 
+mongoose.connect('mongodb://localhost/test');
+
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
