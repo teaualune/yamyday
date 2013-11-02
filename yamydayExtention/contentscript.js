@@ -33,7 +33,7 @@ var removeRightCol = function () {
     	if (matchNews(urlTag[i].href)) {
     		var myButton = document.createElement("input");
     		myButton.type = "image";
-            myButton.src = chrome.extension.getURL("/icon-48.png");
+            myButton.src = chrome.extension.getURL("/LOGO_108x30px-03.png");
 			myButton.onclick=function(){
 					window.open('http://127.0.0.1:3000/');
   				};
