@@ -14,5 +14,6 @@
         "pathname": "/",
         "port": 8080
     },
-    "testMode": false
+    "testMode": false,
+    "cacheOnly": true
 }

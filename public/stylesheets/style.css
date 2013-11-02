@@ -33,7 +33,7 @@ body,
   right: 20px;
   bottom: 0;
   left: 20px;
-  background-position: 50%;
+  background-position: 50% 40px;
   background-repeat: no-repeat;
 }
 .page .pure-g,
@@ -49,7 +49,7 @@ body,
 }
 .headline .content {
   width: 500px;
-  margin-top: 150px;
+  margin-top: 190px;
 }
 .one,
 .two,

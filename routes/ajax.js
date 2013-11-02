@@ -8,7 +8,9 @@
         newsParser = require('../utils/news-parser'),
         shareCounter = require('../utils/share-counter'),
         timeUtils = require('../utils/time-utils'),
-        isTestMode = require('../config.json').testMode,
+        config = require('../config.json'),
+        isTestMode = config.testMode,
+        isCacheOnly = config.cacheOnly,
         testModeArray = function (array) {
             var limit = isTestMode ? 100 : array.length;
             return underscore.first(array, limit);
@@ -27,6 +29,10 @@
             var friends = testModeArray(res.locals.user.friends);
             async.parallel([
                 function (parallelCb) {
+                    if (isCacheOnly) {
+                        parallelCb(null, []);
+                        return;
+                    }
                     async.map(friends, function (friend, callback) {
                         async.waterfall([
                             function (cb) {
