@@ -13,8 +13,8 @@
     module.exports = {
         crawlNewsPage: function (url, source, callback) {
             var qs = querystring.stringify({
-                    queryUrl: url,
-                    querySource: source
+                    url: url,
+                    source: source
                 }),
                 pythonUrl = pythonServer + '?' + qs;
             request(pythonUrl, function (err, res, body) {
