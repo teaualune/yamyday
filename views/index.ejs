@@ -2,8 +2,9 @@
 <html ng-app="yamyday">
     <head>
         <title><%= title %></title>
-        <link rel="stylesheet" href="/stylesheets/pure-min.css" />
-        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" type="text/css" href="/stylesheets/pure-min.css" />
+        <link rel="stylesheet" type="text/css" href="/stylesheets/ng-animation.css" />
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     </head>
     <body>
         <div class="basic-bg" ng-controller="MainCtrl">
@@ -54,10 +55,17 @@
                 </div>
                 <div class="page detail hidden" ng-controller="DetailPageCtrl"><% include detail %></div>
             </div>
+            <button class="toggle-store" ng-click="toggleStoreView($event)"></button>
+            <div class="store hidden slide-right" ng-controller="StoreCtrl">
+                <ul><li ng-repeat="store in stores">
+                    <!-- store -->
+                </li></ul>
+            </div>
             <div class="loading">Loading...</div>
         </div>
         <script type="text/javascript" src="/javascripts/jquery-2.0.3.js"></script>
-        <script type="text/javascript" src="javascripts/angular.js"></script>
-        <script type="text/javascript" src="javascripts/app.js"></script>
+        <script type="text/javascript" src="/javascripts/angular-1.2.0-rc3.js"></script>
+        <script type="text/javascript" src="/javascripts/angular-animate.js"></script>
+        <script type="text/javascript" src="/javascripts/app.js"></script>
     </body>
 </html>

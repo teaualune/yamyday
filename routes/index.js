@@ -15,5 +15,5 @@ exports.index = function (req, res) {
             '<span class="add-store" ng-click="toggleStore(' + sectionI + ', $event)"></span></div>'
         ].join('');
     };
-    res.render('index', { title: req.session.fbid });
+    res.render('index', { title: 'Ya! MyDay - 雅每迭新聞' });
 };

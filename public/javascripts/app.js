@@ -172,9 +172,11 @@
                 } else { // not found, add
                     sm.add(news);
                 }
-                console.log(sm.stores().length);
-
-            }
+            };
+            s.toggleStoreView = function (e) {
+                $(e.currentTarget).toggleClass('added');
+                $('.store').toggleClass('hidden');
+            };
         }
     ]);
 
@@ -183,6 +185,14 @@
         'newsModel',
         function (s, nm) {
             s.detailNews = nm.detailNews;
+        }
+    ]);
+
+    app.controller('StoreCtrl', [
+        '$scope',
+        'storeModel',
+        function (s, sm) {
+            s.stores = sm.stores();
         }
     ]);
 
