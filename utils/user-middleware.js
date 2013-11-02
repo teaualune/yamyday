@@ -9,6 +9,7 @@
                 if (err || !user) {
                     res.redirect('/login');
                 } else {
+                    res.locals.user = user;
                     next();
                 }
             });

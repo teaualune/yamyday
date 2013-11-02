@@ -5,6 +5,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
 
     routes = require('./routes'),
+    ajax = require('./routes/ajax'),
 
     config = require('./config.json'),
     fbConfig = config.facebook,
@@ -39,6 +40,7 @@ app.configure('development', function () {
 
 app.get('/', userMiddleware, routes.index);
 app.get('/login', login(fb, fbConfig));
+app.get('/ajax/main', userMiddleware, ajax.main);
 
 mongoose.connect('mongodb://localhost/test');
 
