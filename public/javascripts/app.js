@@ -112,6 +112,8 @@
                     headline.subTitle = data.news[0].title;
                     headline.imgUrl = data.news[0].imgUrl;
                     headline.newsID = data.news[0]._id;
+                    headline.secondTitle = '';
+                    headline.thirdTitle = '';
                     one.content = data.news[0].content;
                     one.shares = data.news[0].shares;
                 }

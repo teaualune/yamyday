@@ -9,21 +9,27 @@
     <body>
         <div class="basic-bg" ng-controller="MainCtrl">
             <div class="pages invisible">
-                <div class="page headline">
+                <div class="page headline hidden">
                     <div class="content">
+                        <p><img src="{{ headline.imgUrl }}" /></p>
                         <h1>{{ headline.title }}</h1>
                         <h3>{{ headline.subTitle }}</h3>
-                        <img src="{{ headline.imgUrl }}" />
+                        <hr><hr>
+                        <b>&gt;</b><!--
+                     --><span>{{ headline.secondTitle }}</span><!--
+                     --><b>&gt;</b><!--
+                     --><span>{{ headline.thirdTitle }}</span><!--
+                     --><b>&gt;</b>
                     </div>
                 </div>
-                <div class="page one hidden">
+                <div class="page one">
                     <div class="content">
                         <div class="pure-g"><!--
-                         --><div class="pure-u-1-2">
-                                <p>{{ one.content }}</p>
+                         --><div class="pure-u-1-2 left">
+                                <div class="p10"><p class="p10">{{ one.content }}</p></div>
                             </div><!--
                          --><div class="pure-u-1-2">
-                                <ul class="shares"><li ng-repeat="share in one.shares">
+                                <ul class="shares p10"><li ng-repeat="share in one.shares">
                                     <% include share %>
                                 </li></ul>
                             </div><!--

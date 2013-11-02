@@ -11,21 +11,28 @@ h4,
 h5,
 h6,
 p {
-  font: "LiHei Pro";
+  font-family: "LiHei Pro";
   font-weight: normal;
   font-size: 100%;
   margin: 0;
+}
+p {
+  line-height: 1.5em;
 }
 ul,
 li {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 .invisible {
   opacity: 0;
 }
 .hidden {
   display: none;
+}
+.p10 {
+  padding: 10px;
 }
 html,
 body,
@@ -52,19 +59,54 @@ body,
   left: 20px;
   background-repeat: no-repeat;
 }
+.page h1 {
+  font-size: 200%;
+  font-weight: bold;
+}
+.page h3 {
+  font-size: 130%;
+}
 .page .pure-g,
 .page .pure-u-1-2 {
   height: 100%;
 }
 .page .content {
-  margin: 9% auto 6%;
-  height: 75%;
-  min-height: 75%;
+  margin: 7% auto 6%;
+  height: 77%;
+  min-height: 77%;
 }
 .headline {
   background-image: url('/images/headline-bg.png');
   background-size: 547px auto;
   background-position: 50% 40px;
+}
+.headline p {
+  text-align: center;
+  height: 60%;
+}
+.headline img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.headline h1 {
+  height: 25%;
+  overflow-y: hidden;
+}
+.headline h3 {
+  height: 5%;
+  overflow-y: hidden;
+}
+.headline span {
+  display: inline-block;
+  width: 44%;
+  vertical-align: top;
+  overflow: hidden;
+}
+.headline b {
+  width: 4%;
+  display: inline-block;
+  color: #dc1e50;
+  vertical-align: top;
 }
 .headline .content {
   width: 500px;
@@ -86,11 +128,36 @@ body,
 .one {
   background-image: url('/images/one-bg.png');
 }
+.one .pure-u-1-2 {
+  overflow-y: scroll;
+}
+.one .pure-u-1-2.left p {
+  font-size: 150%;
+  line-height: 2em;
+}
 .two {
   background-image: url('/images/two-bg.png');
 }
 .three {
   background-image: url('/images/three-bg.png');
+}
+.shares h4 {
+  line-height: 30px;
+  vertical-align: middle;
+}
+.shares h6 {
+  line-height: 20px;
+  vertical-align: middle;
+}
+.shares p {
+  margin: 1em 0.5em;
+}
+.shares img {
+  float: left;
+  padding-right: 10px;
+}
+.shares li {
+  margin: 1em 0;
 }
 .s-1-2 {
   height: 50%;
@@ -99,23 +166,21 @@ body,
   height: 33.3%;
 }
 .section {
-  padding: 10px;
   box-sizing: border-box;
-}
-.section h3,
-.section h4 {
-  height: 20%;
-  max-height: 20%;
-  vertical-align: center;
-}
-.section p {
-  max-height: 60%;
   overflow-y: hidden;
 }
+.section h3 {
+  font-size: 150%;
+  margin: 5px 0;
+}
+.section h4 {
+  font-size: 130%;
+  margin: 5px 0;
+}
 .section img {
-  max-width: 60%;
-  max-height: 60%;
-  margin: 0 5px;
+  max-width: 100%;
+  max-height: 70%;
+  margin: 10px;
 }
 .layout1 img {
   float: left;
