@@ -1,5 +1,6 @@
 (function () {
     var mongoose = require('mongoose'),
+        underscore = require('underscore'),
         Schema = mongoose.Schema,
         ShareSchema = new Schema({
             _id: String, //postFBID
@@ -61,17 +62,22 @@
     };
 
     exports.getShareByUser = function (config, callback) {
+
         Share.find({
-            _id: config.user,
-            date: {
-                '$gte': config.timeStart,
-                '$lt': config.timeEnd
-            }
+            user: config.user
         }, function (err, docs) {
+            var resultArray = [];
+            console.log('obj');
+            console.log(config.timeStart)
+            underscore.each(docs, function (obj){
+                if (obj.date<=config.timeEnd && obj.date >= config.timeStart) {
+                    resultArray.push(obj);
+                };
+            });
             if (err) {
                 callback(err);
             } else {
-                callback(null, docs);
+                callback(null, resultArray);
             }
         });
     };

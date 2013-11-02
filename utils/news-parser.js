@@ -61,6 +61,8 @@
                     doc.news = news;
                     callback(null, doc);
                 } else {
+                    console.log('create time');
+                    console.log(feed.created_time);
                     Share.create({
                         id: feed.id,
                         userID: userID,
@@ -68,7 +70,7 @@
                         newsID: news._id,
                         message: feed.message,
                         likes: feed.likes.summary.total_count,
-                        date: new Date(feed.created_time)
+                        date: new Date(1000*feed.created_time)
                     }, function (err, doc) {
                         if (err) {
                             callback(err);
