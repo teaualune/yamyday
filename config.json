@@ -3,8 +3,8 @@
     "port": 3000,
     "databaseUrl": "mongodb://127.0.0.1:27017/test",
     "facebook": {
-        "client_id": "254588334697612",
-        "client_secret": "133b2e6a7f13d034551e5b5ccec7698b",
+        "client_id": "587894291272270",
+        "client_secret": "51b9c4cd9ec91219230cf31d1875b8df",
         "scope": "user_about_me, read_stream, friends_status",
         "redirect_uri": "http://127.0.0.1:3000/login"
     },
