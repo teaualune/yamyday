@@ -32,10 +32,10 @@ var removeRightCol = function () {
     	console.log(matchNews(urlTag[i].href));
     	if (matchNews(urlTag[i].href)) {
     		var myButton = document.createElement("input");
-    		myButton.type = "button";
-    		myButton.value = "see on yamyday!"
+    		myButton.type = "image";
+            myButton.src = chrome.extension.getURL("/icon-48.png");
 			myButton.onclick=function(){
-					window.open('http://localhost:3000/');
+					window.open('http://127.0.0.1:3000/');
   				};
 			urlTag[i].parentNode.appendChild(myButton);
     	};
