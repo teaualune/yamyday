@@ -2,6 +2,7 @@
     var underscore = require('underscore'),
         async = require('async'),
         feed = require('../utils/fb-feed'),
+        newsParser = require('../utils/news-parser'),
         timeUtils = require('../utils/time-utils');
 
     module.exports = {
@@ -20,7 +21,9 @@
                     },
                     function (feed, cb) {
                         // parse news
-                        cb(null, feed);
+                        newsParser(feed, {
+                            fbid: res.locals.user._id
+                        }, cb);
                     }
                 ], function (err, results) {
                     callback(err, results);
