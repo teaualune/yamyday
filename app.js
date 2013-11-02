@@ -1,9 +1,16 @@
 var express = require('express'),
-    routes = require('./routes'),
     http = require('http'),
     path = require('path'),
     fb = require('fbgraph'),
     mongoose = require('mongoose'),
+
+    routes = require('./routes'),
+
+    config = require('./config.json'),
+    fbConfig = config.facebook,
+
+    login = require('./utils/login'),
+    userMiddleware = require('./utils/user-middleware'),
 
     app = express();
 
@@ -17,11 +24,11 @@ app.configure(function () {
     app.use(express.methodOverride());
     app.use(express.cookieParser());
     app.use(express.session({
-      secret: 'yamyday'
+        secret: 'yamyday'
     }));
     app.use(app.router);
     app.use(require('less-middleware')({
-      src: __dirname + '/public'
+        src: __dirname + '/public'
     }));
     app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -30,7 +37,8 @@ app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+app.get('/', userMiddleware, routes.index);
+app.get('/login', login(fb, fbConfig));
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

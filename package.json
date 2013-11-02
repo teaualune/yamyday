@@ -10,6 +10,8 @@
     "ejs": "*",
     "less-middleware": "*",
     "fbgraph": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "async": "*",
+    "underscore": "*"
   }
 }
