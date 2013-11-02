@@ -53,8 +53,8 @@
         });
     };
 
-    exports.findNewsByAliases = function (config, callback) {
-        News.findOne({ aliases: config.alias }, function (err, doc) {
+    exports.findNewsByAlias = function (config, callback) {
+        News.findOne({ alias: config.alias }, function (err, doc) {
             if (err) {
                 callback(err);
             } else {

@@ -3,11 +3,15 @@
         async = require('async'),
         feed = require('../utils/fb-feed'),
         newsParser = require('../utils/news-parser'),
-        timeUtils = require('../utils/time-utils');
+        timeUtils = require('../utils/time-utils'),
+        isTestMode = require('../config.json').testMode,
+        testModeArray = function (array) {
+            return underscore.first(array, 10);
+        };
 
     module.exports = {
         main: function (req, res) {
-            var friends = res.locals.user.friends;
+            var friends = testModeArray(res.locals.user.friends);
             async.map(friends, function (friend, callback) {
                 async.waterfall([
                     function (cb) {

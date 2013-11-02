@@ -37,10 +37,8 @@
             friends: config.friends, //friend_FBID
             lastVisit: lastVisit,
             store: []
-        }, function () {
-            callback(null, {
-                result: 'yes'
-            });
+        }, function (err, doc) {
+            callback(null, doc);
         });
     };
 
@@ -60,13 +58,7 @@
                 User.findByIdAndUpdate(config.id, {
                     store: doc.store.push(config.storeUpdate)
                 }, function (err) {
-                    if (err) {
-                        callback(err);   
-                    } else {
-                        callback(null, {
-                            result: 'yes'
-                        });
-                    } 
+                    callback(err);
                 });    
             }
         });

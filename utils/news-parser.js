@@ -3,6 +3,7 @@
         underscore = require('underscore'),
 
         News = require('../models/schema/news'),
+        Share = require('../models/schema/share'),
         crawler = require('./news-crawler'),
 
         newsGroup = {
@@ -89,16 +90,13 @@
                 function (cb) {
                     if (source) {
                         checkFeedParams(feed);
-                        cb();
+                        findNews({
+                            source: source,
+                            link: feed.link
+                        }, cb);
                     } else {
                         cb('skip');
                     }
-                },
-                function (cb) {
-                    findNews({
-                        source: source,
-                        link: feed.link
-                    }, cb);
                 },
                 function (news, cb) {
                     if (news) {

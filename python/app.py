@@ -5,7 +5,7 @@ import htmlParser
 
 app = bottle.Bottle()
 
-@app.route('/search')
+@app.route('/')
 def index():
     url = unicode(request.query.url).encode('utf-8')
     source = request.query.source

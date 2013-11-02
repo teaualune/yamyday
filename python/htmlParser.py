@@ -84,7 +84,7 @@ def getContentWithUrl(url, source):
         return reDic
 
 if __name__ == '__main__':
-    # getContentWithUrl('http://tw.news.yahoo.com/蘋果最新專利曝光-讓太陽幫你的iphone充電-094024840.html', 'yahoo')
+    getContentWithUrl('http://tw.news.yahoo.com/蘋果最新專利曝光-讓太陽幫你的iphone充電-094024840.html', 'yahoo')
     # getContentWithUrl('http://www.ettoday.net/news/20131102/290117.htm', "ettoday")
     # getContentWithUrl('http://www.nownews.com/n/2013/11/01/1008630', 'nownews')
     # getContentWithUrl('http://udn.com/NEWS/MAINLAND/MAI1/8268554.shtml', 'udn')

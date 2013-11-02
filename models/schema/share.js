@@ -24,7 +24,7 @@
                 callback(err);
             } else {
                 callback(null, doc);
-            } 
+            }
         });
     };
 
@@ -43,10 +43,8 @@
         }, function (err, doc) {
             if (err) {
                 callback(err);
-            } else if (doc) {
-                callback(null, doc);
             } else {
-                callback();
+                callback(null, doc);
             }
         });
     };
