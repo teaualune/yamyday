@@ -27,7 +27,9 @@ var removeRightCol = function () {
 	};
 
     var urlTag = document.getElementsByClassName('_1xw shareLink _1y0');
+    //var urlTag = document.getElementsByClassName('_52c6');
     console.log(urlTag);
+    console.log(urlTag.length);
     for (var i = 0; i < urlTag.length; i++){
     	console.log(matchNews(urlTag[i].href));
     	if (matchNews(urlTag[i].href)) {
