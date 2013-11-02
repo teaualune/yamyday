@@ -32,65 +32,31 @@
                     }
                 }
             }
+        },
+
+        hoursAgo = function (timeString) {
+            var time = new Date(timeString),
+                now = new Date(),
+                hours = Math.floor((((now - time) / 1000) / 60) / 60);
+            return (hours) ? (hours + '小時前') : '現在';
         };
 
     window.app = A.module('yamyday', []);
-    // app.factory('newspaperStack', function () {
-    //     var _c = {
-    //             getPage: function () {
-    //                 return _c.scrolls[_c._head];
-    //             },
-    //             scrolls: {
-    //                 headline: {
-    //                     idx: 0,
-    //                     next: 'one',
-    //                     DOM: null
-    //                 },
-    //                 one: {
-    //                     idx: 1,
-    //                     prev: 'headline',
-    //                     next: 'two',
-    //                     DOM: null
-    //                 },
-    //                 two: {
-    //                     idx: 2,
-    //                     prev: 'one',
-    //                     next: 'three',
-    //                     DOM: null
-    //                 },
-    //                 three: {
-    //                     idx: 3,
-    //                     prev: 'two',
-    //                     DOM: null
-    //                 }
-    //             },
-    //             _head: 'headline'
-    //         },
-    //         _s = [ _c ],
-    //         }],
-    //         stack = {
-    //             push: function (obj) {
-    //                 _s.push(obj);
-    //             },
-    //             pop: function () {
-    //                 var obj = false;
-    //                 if (_s.length > 1) {
-    //                     obj = _s.pop();
-    //                 }
-    //                 return obj;
-    //             },
-    //             head: function () {
-    //                 return _s[_s.length - 1];
-    //             }
-    //         };
-    //     return {
-    //         push: function (page) {
-    //             // fadeOut('push', stack.head.getPage());
-    //             stack.push(page);
-    //             // fadeOut('push', stack.head.getPage());
-    //         }
-    //     }
-    // });
+
+    app.factory('storeModel', function () {
+        var _stores = [];
+        return {
+            stores: function () {
+                return _stores;
+            },
+            add: function (news) {
+                _stores.push(news);
+            },
+            remove: function (idx) {
+                _stores.splice(idx, 1);
+            }
+        };
+    });
 
     app.factory('newsModel', function () {
         var news,
@@ -124,11 +90,19 @@
         return {
             init: function (data) {
                 var n = 0,
-                    i;
+                    s,
+                    i = 0;
 
                 news = data.news;
                 scores = data.scores;
                 shares = data.shares;
+                for (s in shares) {
+                    if (shares.hasOwnProperty(s)) {
+                        for (i; i < shares[s].length; i = i + 1) {
+                            shares[s][i].hoursAgo = hoursAgo(shares[s][i].date);
+                        }
+                    }
+                }
                 mergeIntoNews(news, scores, 'score');
                 mergeIntoNews(news, shares, 'shares');
 
@@ -181,16 +155,16 @@
         '$scope',
         '$http',
         'newsModel',
-        function (s, h, m) {
-            s.headline = m.headline;
-            s.one = m.one;
-            s.two = m.two;
-            s.three = m.three;
+        function (s, h, nm) {
+            s.headline = nm.headline;
+            s.one = nm.one;
+            s.two = nm.two;
+            s.three = nm.three;
             h.get('/ajax/main').success(function (data) {
                 console.log(data);
                 $('.pages').removeClass('invisible');
                 $('.loading').addClass('hidden');
-                m.init(data);
+                nm.init(data);
             });
         }
     ]);
@@ -198,8 +172,8 @@
     app.controller('DetailPageCtrl', [
         '$scope',
         'newsModel',
-        function (s, m) {
-            s.detailNews = m.detailNews;
+        function (s, nm) {
+            s.detailNews = nm.detailNews;
         }
     ]);
 
