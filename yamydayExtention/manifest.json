@@ -1,0 +1,34 @@
+{
+  "name" : "Facebook Ad Blocker",
+  "version" : "1.0",
+  "description" : "Delete ad region at the right of Facebook page and message page",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "page_action" :
+  {
+    "default_icon" : "icon-19.png",
+    "default_title" : "Block Facebook Ad..."
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://www.facebook.com/*",
+        "https://www.facebook.com/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_end",
+      "all_frames" : false
+    }
+  ],
+  "permissions": [
+    "http://www.facebook.com/*",
+    "https://www.facebook.com/*"
+  ],
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  },
+  "manifest_version": 2
+}
