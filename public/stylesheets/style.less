@@ -274,6 +274,7 @@ img {
     background: transparent;
 
     &.show {
+        z-index: 1;
         right: -55px;
         background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(3%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
     }
@@ -308,8 +309,13 @@ img {
     }
 
     h4 {
+        text-align: center;
         margin: 2em 0.5em;
     }
+}
+
+.toggle-store, #prev, #next, #scissor, .section, .store-content li {
+    cursor: pointer;
 }
 
 .toggle-store {
@@ -318,7 +324,6 @@ img {
     position: absolute;
     left: 0;
     top: 0;
-    cursor: pointer;
 }
 
 .buttons {

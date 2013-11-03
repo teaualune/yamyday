@@ -275,13 +275,19 @@ body,
 .store-content h4 {
   margin: 2em 0.5em;
 }
+.toggle-store,
+#prev,
+#next,
+#scissor,
+.section {
+  cursor: pointer;
+}
 .toggle-store {
   width: 80px;
   height: inherit;
   position: absolute;
   left: 0;
   top: 0;
-  cursor: pointer;
 }
 .buttons {
   height: 0;
