@@ -37,6 +37,23 @@
                 hours = Math.floor((((now - time) / 1000) / 60) / 60);
             return (hours) ? (hours + '小時前') : '現在';
         },
+        transtionLock = false;
+        transit = function (time, from, to, callback) {
+            if (transtionLock) {
+                return;
+            }
+            transtionLock = true;
+            $(from).css('z-index', 1000);
+            $(to).removeClass('hidden');
+            $(from).animate({
+                opacity: 0
+            }, time, function () {
+                $(from).css('opacity', '').css('z-index', '');
+                $(from).addClass('hidden');
+                transtionLock = false;
+                callback();
+            });
+        },
 
         newsPage = [
             '.headline',
@@ -205,8 +222,7 @@
                     nm.detailNews.content = n.content;
                     nm.detailNews.newsID = n._id;
                     nm.detailNews.shares = n.shares;
-                    $('.page').addClass('hidden');
-                    $('.detail').removeClass('hidden');
+                    transit(1000, newsPage[newsPageIdx], '.detail', function () {});
                 }
             };
         }
@@ -218,21 +234,8 @@
         function (s, nm) {
             s.detailNews = nm.detailNews;
             s.closeDetail = function () {
-                $('.page').addClass('hidden');
-                $(newsPage[newsPageIdx]).removeClass('hidden');
+                transit(1000, '.detail', newsPage[newsPageIdx], function () {});
             };
-            // $('.pages').delegate('.section', 'click', function (e) {
-            //     var newsID = $(e.currentTarget).attr('newsID');
-            //     var n = nm.newsById(newsID);
-            //     if (n) {
-            //         s.detailNews = n;
-            //         $('.page').addClass('hidden');
-            //         $('.detail').removeClass('hidden');
-            //         s.closeDetail();
-            //         $('.page').addClass('hidden');
-            //         $('.detail').removeClass('hidden');
-            //     }
-            // });
         }
     ]);
 
@@ -248,28 +251,42 @@
     $('#prev').click(function (e) {
         if (newsPageIdx > 0) {
             newsPageIdx = newsPageIdx - 1;
-            $('.page').addClass('hidden');
-            $(newsPage[newsPageIdx]).removeClass('hidden');
+            transit(500, newsPage[newsPageIdx + 1], newsPage[newsPageIdx], function () {
+                if (newsPageIdx === 0) {
+                    $('.pages').addClass('layoutHeadline');
+                } else {
+                    $('.pages').removeClass('layoutHeadline');
+                    $('.pages').removeClass('layoutThree');
+                }
+            });
+            // $('.page').addClass('hidden');
+            // $(newsPage[newsPageIdx]).removeClass('hidden');
         }
-        if (newsPageIdx === 0) {
-            $('.pages').addClass('layoutHeadline');
-        } else {
-            $('.pages').removeClass('layoutHeadline');
-            $('.pages').removeClass('layoutThree');
-        }
+        // if (newsPageIdx === 0) {
+        //     $('.pages').addClass('layoutHeadline');
+        // } else {
+        //     $('.pages').removeClass('layoutHeadline');
+        //     $('.pages').removeClass('layoutThree');
+        // }
     });
     $('#next').click(function (e) {
         if (newsPageIdx < 3) {
             newsPageIdx = newsPageIdx + 1;
-            $('.page').addClass('hidden');
-            $(newsPage[newsPageIdx]).removeClass('hidden');
+            transit(500, newsPage[newsPageIdx - 1], newsPage[newsPageIdx], function () {
+                if (newsPageIdx === 3) {
+                    $('.pages').addClass('layoutThree');
+                } else {
+                    $('.pages').removeClass('layoutThree');
+                    $('.pages').removeClass('layoutHeadline');
+                }
+            });
         }
-        if (newsPageIdx === 3) {
-            $('.pages').addClass('layoutThree');
-        } else {
-            $('.pages').removeClass('layoutThree');
-            $('.pages').removeClass('layoutHeadline');
-        }
+        // if (newsPageIdx === 3) {
+        //     $('.pages').addClass('layoutThree');
+        // } else {
+        //     $('.pages').removeClass('layoutThree');
+        //     $('.pages').removeClass('layoutHeadline');
+        // }
     });
 
 
