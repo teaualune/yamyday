@@ -263,25 +263,36 @@ img {
     }
 }
 
-.toggle-store {
-    width: 50px;
-    height: 4%;
-    position: absolute;
-    right: 0;
-    top: 48%;
-}
-
 .store {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -1158px;
     bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-
-    &.hidden {
-        opacity: 0;
+    width: 1238px;
+    height: inherit;
+    -webkit-transition: right 1s, background 1s;
+    background: transparent;
+    &.show {
+        right: -55px;
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(3%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
     }
+}
+
+.store-content {
+    margin-top: 20px;
+    position: relative;
+    width: inherit;
+    height: 713px;
+    background-image: url('/images/store-view.png');
+}
+
+.toggle-store {
+    width: 80px;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
 }
 
 .buttons {

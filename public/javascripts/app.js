@@ -68,9 +68,7 @@
     app.factory('storeModel', function () {
         var _stores = [];
         return {
-            stores: function () {
-                return _stores;
-            },
+            stores: _stores,
             add: function (news) {
                 _stores.push(news);
             },
@@ -200,20 +198,17 @@
                 nm.init(data);
             });
             s.toggleStore = function (news, e) {
-                var idx = sm.stores().indexOf(news);
+                var idx = sm.stores.indexOf(news);
                 $(e.currentTarget).toggleClass('added');
+                console.log(news);
                 if (idx >= 0) { // found, remove
                     sm.remove(idx);
                 } else { // not found, add
                     sm.add(news);
                 }
             };
-            s.toggleStoreView = function (e) {
-                $(e.currentTarget).toggleClass('added');
-                $('.store').toggleClass('hidden');
-            };
             s.showDetail = function (e) {
-                if ('body'.hasClass('chooseMode')) { return; }
+                if ($('body').hasClass('chooseMode')) { return; }
                 var newsID = $(e.currentTarget).attr('newsID');
                 var n = nm.newsById(newsID);
                 if (n) {
@@ -244,7 +239,10 @@
         '$scope',
         'storeModel',
         function (s, sm) {
-            s.stores = sm.stores();
+            s.stores = sm.stores;
+            s.toggleStoreView = function () {
+                $('.store').toggleClass('show');
+            };
         }
     ]);
 

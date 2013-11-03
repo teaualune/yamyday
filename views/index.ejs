@@ -71,11 +71,13 @@
                     <span id="next"></span>
                 </div>
             </div>
-            <button class="toggle-store" ng-click="toggleStoreView($event)"></button>
-            <div class="store hidden slide-right" ng-controller="StoreCtrl">
-                <ul><li ng-repeat="store in stores">
-                    <!-- store -->
-                </li></ul>
+            <div class="store" ng-controller="StoreCtrl">
+                <div class="store-content">
+                    <div class="toggle-store" ng-click="toggleStoreView()"></div>
+                    <ul><li ng-repeat="store in stores">
+                        <h1>{{ store.newsID }}</h1>
+                    </li></ul>
+                </div>
             </div>
             <div class="loading">Loading...</div>
             <div id="scissor"></div>
