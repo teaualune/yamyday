@@ -13,8 +13,13 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: rgba(0, 0, 0, 0.8);
+}
+
 p {
     line-height: 1.5em;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 ul, li {
@@ -34,15 +39,18 @@ ul, li {
 .p10 {
     padding: 10px;
 }
+html, body, .basic-bg, .pages {
+    overflow: hidden;
+}
 
-html, body, .basic-bg, .pages, .pages, .page {
+html, body, .basic-bg, .pages, .page {
     height: 100%;
     min-height: 100%;
 }
 
 .basic-bg {
     background-image: url('/images/bg.png');
-    background-size: auto 100%;
+    background-size: 100% auto;
 }
 
 .pages {
@@ -59,12 +67,12 @@ html, body, .basic-bg, .pages, .pages, .page {
     background-repeat: no-repeat;
 
     h1 {
-        font-size: 200%;
+        font-size: 64px;
         font-weight: bold;
     }
 
     h3 {
-        font-size: 130%;
+        font-size: 30px;
     }
 
     .pure-g, .pure-u-1-2 {
@@ -78,30 +86,16 @@ html, body, .basic-bg, .pages, .pages, .page {
     }
 }
 
+.headline h1 {
+    color: rgb(195, 13, 35);
+}
+
+@headline-width: 534px;
+
 .headline {
     background-image: url('/images/headline-bg.png');
-    background-size: 547px auto;
-    background-position: 50% 40px;
-
-    p {
-        text-align: center;
-        height: 60%;
-    }
-
-    img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    h1 {
-        height: 25%;
-        overflow-y: hidden;
-    }
-
-    h3 {
-        height: 5%;
-        overflow-y: hidden;
-    }
+    background-size: @headline-width auto;
+    background-position: 52% 40px;
 
     span {
         display: inline-block;
@@ -118,16 +112,31 @@ html, body, .basic-bg, .pages, .pages, .page {
     }
 
     .content {
-        width: 500px;
+        width: 460px;
         height: 65%;
         min-height: 65%;
         margin-top: 15%;
     }
 }
 
-.one, .two, .three {
-    background-size: 988px auto;
-    background-position: 50% 60px;
+.headline, .detail {
+    p {
+        text-align: center;
+        height: 60%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+}
+
+@fullsize-width: 988px;
+
+.one, .two, .three, .detail {
+    background-size: @fullsize-width auto;
+    background-position: 50% 40px;
     .content {
         width: 950px;
     }
@@ -139,7 +148,7 @@ html, body, .basic-bg, .pages, .pages, .page {
         overflow-y: scroll;
 
         &.left p {
-            font-size: 150%;
+            font-size: 100%;
             line-height: 2em;
         }
     }
@@ -153,9 +162,32 @@ html, body, .basic-bg, .pages, .pages, .page {
     background-image: url('/images/three-bg.png');
 }
 
+.detail {
+    background-image: url('/images/stack-bg.png');
+    .pure-u-1-2 {
+        overflow-y: scroll;
+
+        &.left p {
+            font-size: 100%;
+            line-height: 2em;
+        }
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: gray;
+    border: 0;
+}
+
 .shares {
     h4 {
-        line-height: 30px;
+        line-height: 24px;
         vertical-align: middle;
     }
     h6 {
@@ -187,7 +219,7 @@ html, body, .basic-bg, .pages, .pages, .page {
     overflow-y: hidden;
 
     h3 {
-        font-size: 150%;
+        font-size: 24px;
         margin: 5px 0;
     }
 
@@ -195,6 +227,10 @@ html, body, .basic-bg, .pages, .pages, .page {
         font-size: 130%;
         margin: 5px 0;
     }
+}
+
+.layout2 h3 {
+    padding-top: 20px;
 }
 
 img {
@@ -211,35 +247,167 @@ img {
     }
 }
 
-.add-store {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: red;
-    -webkit-transition: background 0.5s;
-
-    &.added {
-        background-color: green;
-    }
+// for add-store icon
+.left, .section {
+    position: relative;
 }
 
-.toggle-store {
-    width: 50px;
-    height: 4%;
+.add-store {
     position: absolute;
-    right: 0;
-    top: 48%;
+    top: 10px;
+    right: 10px;
+    display: none;
+    width: 31px;
+    height: 35px;
+    background-image: url('/images/scissor-icon.png');
+
+    .chooseMode & {
+        display: inline-block;
+    }
+
+    &.added {
+        -webkit-filter: drop-shadow(5px 5px 5px gray);
+    }
 }
 
 .store {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -1158px;
     bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 1238px;
+    height: inherit;
+    -webkit-transition: right 1s, background 1s;
+    background: transparent;
 
-    &.hidden {
-        opacity: 0;
+    &.show {
+        z-index: 1;
+        right: -55px;
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(3%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
     }
+}
+
+.store-content {
+    margin-top: 20px;
+    position: relative;
+    width: inherit;
+    height: 713px;
+    background-image: url('/images/store-view.png');
+
+    ul {
+        padding: 150px 200px 0;
+        height: 413px;
+        overflow-x: scroll;
+    }
+
+    li {
+        width: 300px;
+        height: 400px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -220px;
+        position: relative;
+        background-color: gray;
+        border: 1px solid black;
+
+        &:hover {
+            z-index: 1;
+        }
+    }
+
+    h4 {
+        text-align: center;
+        margin: 2em 0.5em;
+    }
+}
+
+.toggle-store, #prev, #next, #scissor, .section, .store-content li {
+    cursor: pointer;
+}
+
+.toggle-store {
+    width: 80px;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.buttons {
+    height: 0;
+    position: relative;
+    width: @fullsize-width;
+    margin: 0 auto;
+
+    .layoutHeadline & {
+        width: @headline-width;
+    }
+}
+
+#prev {
+    display: inline-block;
+    background-image: url('/images/turnL.png');
+    width: 122px;
+    height: 112px;
+    position: absolute;
+    bottom: -710px; /* magic num I know... */
+    left: 0;
+
+    .layoutThree & {
+        bottom: -698px;
+    }
+
+    .layoutHeadline & {
+        display: none;
+    }
+}
+
+#next {
+    display: inline-block;
+    background-image: url('/images/turnR.png');
+    width: 122px;
+    height: 112px;
+    position: absolute;
+    bottom: -710px;
+    right: 0;
+
+    .layoutHeadline & {
+        bottom: -698px;
+    }
+
+    .layoutThree & {
+        display: none;
+    }
+}
+
+#scissor {
+    position: absolute;
+    width: 399px;
+    height: 197px;
+    left: -200px;
+    top: 45%;
+    background-image: url('/images/scissor.png');
+    -webkit-transition: left 0.25s ease-out, -webkit-transform 0.35s ease-out;
+
+    &:hover {
+        left: -120px;
+    }
+    .chooseMode & {
+        -webkit-transform: rotate(180deg);
+    }
+}
+
+.detail h1 {
+    font-size: 30px;
+    line-height: 1.5em;
+}
+
+.section h3 {
+    line-height: 1.2em;
+}
+
+.detail .left img {
+    max-height: 80%;
+    max-width: 80%;
+    padding: 9%;
 }

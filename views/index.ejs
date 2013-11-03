@@ -9,8 +9,8 @@
     <body>
 
         <div class="basic-bg" ng-controller="MainCtrl">
-            <div class="pages invisible">
-                <div class="page headline hidden">
+            <div class="pages layoutHeadline invisible">
+                <div class="page headline">
                     <div class="content">
                         <p><img src="{{ headline.imgUrl }}" /></p>
                         <h1>{{ headline.title }}</h1>
@@ -23,11 +23,15 @@
                      --><b>&gt;</b>
                     </div>
                 </div>
-                <div class="page one">
+                <div class="page one hidden">
                     <div class="content">
                         <div class="pure-g"><!--
                          --><div class="pure-u-1-2 left">
-                                <div class="p10"><p class="p10">{{ one.content }}</p></div>
+                                <div class="p10">
+                                    <h3>{{ one.subTitle }}</h3>
+                                    <p class="p10">{{ one.content }}</p>
+                                </div>
+                                <span class="add-store" ng-click="toggleStore(one, $event)"></span>
                             </div><!--
                          --><div class="pure-u-1-2">
                                 <ul class="shares p10"><li ng-repeat="share in one.shares">
@@ -66,16 +70,24 @@
                      --></div>
                     </div>
                 </div>
-                <div class="page detail hidden" ng-controller="DetailPageCtrl"><% include detail %></div>
+                <div class="buttons">
+                    <span id="prev"></span>
+                    <span id="next"></span>
+                </div>
             </div>
-            <button class="toggle-store" ng-click="toggleStoreView($event)"></button>
-            <div class="store hidden slide-right" ng-controller="StoreCtrl">
-                <ul><li ng-repeat="store in stores">
-                    <!-- store -->
-                </li></ul>
+            <div class="store" ng-controller="StoreCtrl">
+                <div class="store-content">
+                    <div class="toggle-store" ng-click="toggleStoreView()"></div>
+                    <ul><li ng-repeat="store in stores" ng-click="showDetail($event)" newsid="{{ store.newsID }}">
+                        <h4>{{ store.title }}</h4>
+                        <h4>{{ store.subTitle }}</h4>
+                    </li></ul>
+                </div>
             </div>
             <div class="loading">Loading...</div>
+            <div id="scissor"></div>
         </div>
+        <div class="page detail hidden" ng-controller="DetailPageCtrl"><% include detail %></div>
         <script type="text/javascript" src="/javascripts/jquery-2.0.3.js"></script>
         <script type="text/javascript" src="/javascripts/angular-1.2.0-rc3.js"></script>
         <script type="text/javascript" src="/javascripts/angular-animate.js"></script>
