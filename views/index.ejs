@@ -27,6 +27,7 @@
                         <div class="pure-g"><!--
                          --><div class="pure-u-1-2 left">
                                 <div class="p10"><p class="p10">{{ one.content }}</p></div>
+                                <span class="add-store" ng-click="toggleStore(one, $event)"></span>
                             </div><!--
                          --><div class="pure-u-1-2">
                                 <ul class="shares p10"><li ng-repeat="share in one.shares">
@@ -77,6 +78,7 @@
                 </li></ul>
             </div>
             <div class="loading">Loading...</div>
+            <div id="scissor"></div>
         </div>
         <div class="page detail hidden" ng-controller="DetailPageCtrl"><% include detail %></div>
         <script type="text/javascript" src="/javascripts/jquery-2.0.3.js"></script>

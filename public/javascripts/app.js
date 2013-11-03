@@ -213,6 +213,7 @@
                 $('.store').toggleClass('hidden');
             };
             s.showDetail = function (e) {
+                if ('body'.hasClass('chooseMode')) { return; }
                 var newsID = $(e.currentTarget).attr('newsID');
                 var n = nm.newsById(newsID);
                 if (n) {
@@ -295,6 +296,10 @@
             xLeft = 1 - xRight;
         $('#prev').css('opacity', xLeft * 2);
         $('#next').css('opacity', xRight * 2);
+    });
+
+    $('#scissor').click(function () {
+        $('body').toggleClass('chooseMode');
     });
 
 }(angular, jQuery));

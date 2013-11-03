@@ -214,12 +214,22 @@ body,
 .layout2 img {
   float: right;
 }
+.left,
+.section {
+  position: relative;
+}
 .add-store {
-  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
   width: 35px;
   height: 35px;
   background-color: red;
   -webkit-transition: background 0.5s;
+}
+.chooseMode .add-store {
+  display: inline-block;
 }
 .add-store.added {
   background-color: green;
@@ -282,4 +292,19 @@ body,
 }
 .layoutThree #next {
   display: none;
+}
+#scissor {
+  position: absolute;
+  width: 399px;
+  height: 197px;
+  left: -200px;
+  top: 45%;
+  background-image: url('/images/scissor.png');
+  -webkit-transition: left 0.25s ease-out, -webkit-transform 0.35s ease-out;
+}
+#scissor:hover {
+  left: -120px;
+}
+.chooseMode #scissor {
+  -webkit-transform: rotate(180deg);
 }

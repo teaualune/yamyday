@@ -10,7 +10,7 @@ exports.index = function (req, res) {
             (layoutType === 3) ? '' : img,
             content,
             // '<span class="more">more</span>',
-            // '<span class="add-store" ng-click="toggleStore(' + sectionI + ', $event)"></span>'
+            '<span class="add-store" ng-click="toggleStore(' + sectionI + ', $event)"></span>',
             '</div>'
         ].join('');
     };

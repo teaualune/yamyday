@@ -240,12 +240,24 @@ img {
     }
 }
 
+// for add-store icon
+.left, .section {
+    position: relative;
+}
+
 .add-store {
-    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
     width: 35px;
     height: 35px;
     background-color: red;
     -webkit-transition: background 0.5s;
+
+    .chooseMode & {
+        display: inline-block;
+    }
 
     &.added {
         background-color: green;
@@ -317,5 +329,22 @@ img {
 
     .layoutThree & {
         display: none;
+    }
+}
+
+#scissor {
+    position: absolute;
+    width: 399px;
+    height: 197px;
+    left: -200px;
+    top: 45%;
+    background-image: url('/images/scissor.png');
+    -webkit-transition: left 0.25s ease-out, -webkit-transform 0.35s ease-out;
+
+    &:hover {
+        left: -120px;
+    }
+    .chooseMode & {
+        -webkit-transform: rotate(180deg);
     }
 }
