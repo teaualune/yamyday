@@ -261,18 +261,16 @@ body,
 }
 .store-content li {
   width: 300px;
-  height: 300px;
+  height: 400px;
   display: inline-block;
   vertical-align: middle;
-  margin-right: -250px;
+  margin-right: -220px;
   position: relative;
-  -webkit-transition: padding 0.3s;
   background-color: gray;
   border: 1px solid black;
 }
 .store-content li:hover {
   z-index: 1;
-  padding: 50px 0;
 }
 .store-content h4 {
   margin: 2em 0.5em;
