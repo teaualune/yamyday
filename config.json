@@ -15,5 +15,5 @@
         "port": 8080
     },
     "testMode": false,
-    "cacheOnly": true
+    "cacheOnly": false
 }
