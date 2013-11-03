@@ -1,5 +1,5 @@
 body {
-  font: 14px "微軟正黑體", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "蘋果儷細黑", "微軟正黑體", "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
@@ -11,14 +11,15 @@ h4,
 h5,
 h6,
 p {
-  font-family: "LiHei Pro";
+  font-family: "蘋果儷細黑", "LiHei Pro";
   font-weight: normal;
   font-size: 100%;
   margin: 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 p {
   line-height: 1.5em;
-  color: rgba(0, 0, 0, 0.6);
+  font-size: 80%;
 }
 ul,
 li {
@@ -33,7 +34,7 @@ li {
   display: none;
 }
 .p10 {
-  padding: 10px;
+  padding: 20px;
 }
 html,
 body,
@@ -77,9 +78,9 @@ body,
   height: 100%;
 }
 .page .content {
-  margin: 7% auto 6%;
-  height: 77%;
-  min-height: 77%;
+  margin: 5% auto;
+  height: 86%;
+  min-height: 86%;
 }
 .headline h1 {
   color: #c30d23;
@@ -362,4 +363,3 @@ body,
   max-width: 80%;
   padding: 9%;
 }
-
