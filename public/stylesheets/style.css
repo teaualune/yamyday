@@ -223,16 +223,15 @@ body,
   top: 10px;
   right: 10px;
   display: none;
-  width: 35px;
+  width: 31px;
   height: 35px;
-  background-color: red;
-  -webkit-transition: background 0.5s;
+  background-image: url('/images/scissor-icon.png');
 }
 .chooseMode .add-store {
   display: inline-block;
 }
 .add-store.added {
-  background-color: green;
+  -webkit-filter: hue-rotate(90deg);
 }
 .toggle-store {
   width: 50px;
