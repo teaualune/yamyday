@@ -140,6 +140,7 @@
                     headline.thirdTitle = '';
                     one.content = data.news[0].content;
                     one.shares = data.news[0].shares;
+                    one.subTitle = data.news[0].title;
                 }
                 if (news.length > 1) { // at least 2
                     n = Math.min(data.news.length, 5);

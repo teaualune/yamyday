@@ -18,6 +18,7 @@ p {
 }
 p {
   line-height: 1.5em;
+  color: rgba(0, 0, 0, 0.6);
 }
 ul,
 li {
@@ -37,7 +38,12 @@ li {
 html,
 body,
 .basic-bg,
-.pages,
+.pages {
+  overflow: hidden;
+}
+html,
+body,
+.basic-bg,
 .pages,
 .page {
   height: 100%;
@@ -45,7 +51,7 @@ body,
 }
 .basic-bg {
   background-image: url('/images/bg.png');
-  background-size: auto 100%;
+  background-size: 100% auto;
 }
 .pages {
   position: relative;
@@ -60,11 +66,11 @@ body,
   background-repeat: no-repeat;
 }
 .page h1 {
-  font-size: 200%;
+  font-size: 64px;
   font-weight: bold;
 }
 .page h3 {
-  font-size: 130%;
+  font-size: 30px;
 }
 .page .pure-g,
 .page .pure-u-1-2 {
@@ -75,10 +81,13 @@ body,
   height: 77%;
   min-height: 77%;
 }
+.headline h1 {
+  color: #c30d23;
+}
 .headline {
   background-image: url('/images/headline-bg.png');
-  background-size: 547px auto;
-  background-position: 50% 40px;
+  background-size: 534px auto;
+  background-position: 52% 40px;
 }
 .headline span {
   display: inline-block;
@@ -93,7 +102,7 @@ body,
   vertical-align: top;
 }
 .headline .content {
-  width: 500px;
+  width: 460px;
   height: 65%;
   min-height: 65%;
   margin-top: 15%;
@@ -108,22 +117,12 @@ body,
   max-width: 100%;
   max-height: 100%;
 }
-.headline h1,
-.detail h1 {
-  height: 25%;
-  overflow-y: hidden;
-}
-.headline h3,
-.detail h3 {
-  height: 5%;
-  overflow-y: hidden;
-}
 .one,
 .two,
 .three,
 .detail {
   background-size: 988px auto;
-  background-position: 50% 60px;
+  background-position: 50% 40px;
 }
 .one .content,
 .two .content,
@@ -138,7 +137,7 @@ body,
   overflow-y: scroll;
 }
 .one .pure-u-1-2.left p {
-  font-size: 150%;
+  font-size: 100%;
   line-height: 2em;
 }
 .two {
@@ -154,7 +153,7 @@ body,
   overflow-y: scroll;
 }
 .detail .pure-u-1-2.left p {
-  font-size: 150%;
+  font-size: 100%;
   line-height: 2em;
 }
 .close-btn {
@@ -168,7 +167,7 @@ body,
   border: 0;
 }
 .shares h4 {
-  line-height: 30px;
+  line-height: 24px;
   vertical-align: middle;
 }
 .shares h6 {
@@ -196,12 +195,15 @@ body,
   overflow-y: hidden;
 }
 .section h3 {
-  font-size: 150%;
+  font-size: 24px;
   margin: 5px 0;
 }
 .section h4 {
   font-size: 130%;
   margin: 5px 0;
+}
+.layout2 h3 {
+  padding-top: 20px;
 }
 .section img {
   max-width: 100%;
@@ -244,6 +246,7 @@ body,
   background: transparent;
 }
 .store.show {
+  z-index: 1;
   right: -55px;
   background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(3%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.5)));
 }
@@ -273,13 +276,15 @@ body,
   z-index: 1;
 }
 .store-content h4 {
+  text-align: center;
   margin: 2em 0.5em;
 }
 .toggle-store,
 #prev,
 #next,
 #scissor,
-.section {
+.section,
+.store-content li {
   cursor: pointer;
 }
 .toggle-store {
@@ -296,7 +301,7 @@ body,
   margin: 0 auto;
 }
 .layoutHeadline .buttons {
-  width: 547px;
+  width: 534px;
 }
 #prev {
   display: inline-block;
@@ -304,7 +309,7 @@ body,
   width: 122px;
   height: 112px;
   position: absolute;
-  bottom: -730px;
+  bottom: -710px;
   /* magic num I know... */
 
   left: 0;
@@ -321,7 +326,7 @@ body,
   width: 122px;
   height: 112px;
   position: absolute;
-  bottom: -730px;
+  bottom: -710px;
   right: 0;
 }
 .layoutHeadline #next {
@@ -344,4 +349,16 @@ body,
 }
 .chooseMode #scissor {
   -webkit-transform: rotate(180deg);
+}
+.detail h1 {
+  font-size: 30px;
+  line-height: 1.5em;
+}
+.section h3 {
+  line-height: 1.2em;
+}
+.detail .left img {
+  max-height: 80%;
+  max-width: 80%;
+  padding: 9%;
 }

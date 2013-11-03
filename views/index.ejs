@@ -26,7 +26,10 @@
                     <div class="content">
                         <div class="pure-g"><!--
                          --><div class="pure-u-1-2 left">
-                                <div class="p10"><p class="p10">{{ one.content }}</p></div>
+                                <div class="p10">
+                                    <h3>{{ one.subTitle }}</h3>
+                                    <p class="p10">{{ one.content }}</p>
+                                </div>
                                 <span class="add-store" ng-click="toggleStore(one, $event)"></span>
                             </div><!--
                          --><div class="pure-u-1-2">
