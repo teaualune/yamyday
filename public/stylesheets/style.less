@@ -272,6 +272,7 @@ img {
     height: inherit;
     -webkit-transition: right 1s, background 1s;
     background: transparent;
+
     &.show {
         right: -55px;
         background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(3%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
@@ -284,6 +285,31 @@ img {
     width: inherit;
     height: 713px;
     background-image: url('/images/store-view.png');
+
+    ul {
+        padding: 150px 200px 0;
+        height: 413px;
+        overflow-x: scroll;
+    }
+
+    li {
+        width: 300px;
+        height: inherit;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -220px;
+        position: relative;
+        background-color: gray;
+        border: 1px solid black;
+
+        &:hover {
+            z-index: 1;
+        }
+    }
+
+    h4 {
+        margin: 2em 0.5em;
+    }
 }
 
 .toggle-store {

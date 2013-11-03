@@ -254,6 +254,29 @@ body,
   height: 713px;
   background-image: url('/images/store-view.png');
 }
+.store-content ul {
+  padding: 150px 200px 0;
+  height: 413px;
+  overflow-x: scroll;
+}
+.store-content li {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -250px;
+  position: relative;
+  -webkit-transition: padding 0.3s;
+  background-color: gray;
+  border: 1px solid black;
+}
+.store-content li:hover {
+  z-index: 1;
+  padding: 50px 0;
+}
+.store-content h4 {
+  margin: 2em 0.5em;
+}
 .toggle-store {
   width: 80px;
   height: inherit;
